@@ -15,7 +15,12 @@ on:
       version:
         description: 'OpenWrt version'
         required: true
-        default: 'snapshot'
+        default: 'openwrt-24.10.0'
+        type: string
+      profile:
+        description: 'Targets/Subtarget/Profile (eg: ramips/mt7621/dlink_dir-882-a1)'
+        required: false
+        default: 'ramips/mt7621/dlink_dir-882-a1'
         type: string
 
 env:
@@ -81,6 +86,13 @@ jobs:
         $CUSTOM_FEEDS_SH
         $BUILD_ROOT/scripts/feeds update -a && $BUILD_ROOT/scripts/feeds install -a
         $CUSTOM_PACKAGES_SH
+
+        # Parse the profile input into target, subtarget, and device_profile
+        IFS='/' read -r TARGET SUBTARGET DEVICE_PROFILE <<< "${{ github.event.inputs.profile }}"
+        echo "CONFIG_TARGET_${TARGET}=y" >> $BUILD_ROOT/.config
+        echo "CONFIG_TARGET_${TARGET}_${SUBTARGET}=y" >> $BUILD_ROOT/.config
+        echo "CONFIG_TARGET_${TARGET}_${SUBTARGET}_DEVICE_${DEVICE_PROFILE}=y" >> $BUILD_ROOT/.config
+
         $CUSTOM_CONFIG_SH
 
     - name: Start SSH via tmate
