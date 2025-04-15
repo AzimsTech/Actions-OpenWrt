@@ -1,4 +1,5 @@
 # Custom firmware base
+echo 'CONFIG_TARGET_MULTI_PROFILE=y' >> $BUILD_ROOT/.config
 echo 'CONFIG_TARGET_ramips=y' >> $BUILD_ROOT/.config
 echo 'CONFIG_TARGET_ramips_mt7621=y' >> $BUILD_ROOT/.config
 echo 'CONFIG_TARGET_ramips_mt7621_DEVICE_dlink_dir-882-a1=y' >> $BUILD_ROOT/.config
