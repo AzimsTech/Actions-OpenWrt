@@ -15,7 +15,7 @@ on:
       version:
         description: 'OpenWrt version'
         required: true
-        default: 'snapshot'
+        default: 'openwrt-24.10'
         type: string
       package:
          description: 'Custom package name'
