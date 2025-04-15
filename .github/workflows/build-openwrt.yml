@@ -17,6 +17,11 @@ on:
         required: true
         default: 'snapshot'
         type: string
+      package:
+         description: 'Custom package name'
+         required: false
+         default: 'luci luci-app-sqm'
+         type: string
 
 env:
   REPO_URL: https://github.com/AzimsTech/openwrt.git
@@ -81,6 +86,12 @@ jobs:
         $CUSTOM_FEEDS_SH
         $BUILD_ROOT/scripts/feeds update -a && $BUILD_ROOT/scripts/feeds install -a
         $CUSTOM_PACKAGES_SH
+
+        # Handle packages
+         for pkg in ${{ github.event.inputs.package }}; do
+           echo "CONFIG_PACKAGE_${pkg}=y" >> $BUILD_ROOT/.config
+         done
+
         $CUSTOM_CONFIG_SH
 
     - name: Start SSH via tmate
