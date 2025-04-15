@@ -39,8 +39,8 @@
 # echo 'CONFIG_PACKAGE_docker-compose=y' >> $BUILD_ROOT/.config
 
 # Add other apps
-echo 'CONFIG_PACKAGE_luci=y' >> $BUILD_ROOT/.config
-echo 'CONFIG_PACKAGE_luci-app-sqm=y' >> $BUILD_ROOT/.config
+# echo 'CONFIG_PACKAGE_luci=y' >> $BUILD_ROOT/.config
+# echo 'CONFIG_PACKAGE_luci-app-sqm=y' >> $BUILD_ROOT/.config
 # echo 'CONFIG_PACKAGE_luci-ssl=y' >> $BUILD_ROOT/.config
 
 # echo 'CONFIG_PACKAGE_luci-app-wol=y' >> $BUILD_ROOT/.config
