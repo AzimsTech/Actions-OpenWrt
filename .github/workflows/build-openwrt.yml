@@ -15,10 +15,10 @@ on:
       version:
         description: 'OpenWrt version'
         required: true
-        default: 'openwrt-24.10.0'
+        default: 'openwrt-24.10'
         type: string
       profile:
-        description: 'Targets/Subtarget/Profile (eg: ramips/mt7621/dlink_dir-882-a1)'
+        description: '<Targets>/<Subtarget>/<Profile>'
         required: false
         default: 'ramips/mt7621/dlink_dir-882-a1'
         type: string
