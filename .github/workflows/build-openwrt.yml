@@ -19,14 +19,14 @@ on:
         type: string
 
 env:
-  REPO_URL: https://git.openwrt.org/openwrt/openwrt.git
+  REPO_URL: https://github.com/AzimsTech/openwrt.git
   REPO_BRANCH: master
   BUILD_ROOT: ${{ github.workspace }}/openwrt
   DEPENDENCIES: ${{ github.workspace }}/dependencies-ubuntu.txt
   CUSTOM_FEEDS_SH: ${{ github.workspace }}/custom-feeds.sh
   CUSTOM_PACKAGES_SH: ${{ github.workspace }}/custom-packages.sh
   CUSTOM_CONFIG_SH: ${{ github.workspace }}/custom-config.sh
-  TZ: Asia/Shanghai
+  TZ: Asia/Kuala_Lumpur
   DEVICE_NAME: unknown
   FILE_DATE: unknown
   FIRMWARE: unknown
