@@ -30,7 +30,7 @@ on:
 
 env:
   REPO_URL: https://github.com/AzimsTech/openwrt.git
-  REPO_BRANCH: master
+  REPO_BRANCH: main
   BUILD_ROOT: ${{ github.workspace }}/openwrt
   DEPENDENCIES: ${{ github.workspace }}/dependencies-ubuntu.txt
   CUSTOM_FEEDS_SH: ${{ github.workspace }}/custom-feeds.sh
