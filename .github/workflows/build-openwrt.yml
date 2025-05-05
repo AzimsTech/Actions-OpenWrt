@@ -16,7 +16,12 @@ on:
         description: 'OpenWrt version'
         required: true
         default: 'openwrt-24.10'
-        type: string
+        type: choice
+        options:
+        - openwrt-24.10
+        - snapshot
+        - openwrt-23.05
+        - openwrt-22.03
       profile:
         description: '<Targets>/<Subtarget>/<Profile>'
         required: true
