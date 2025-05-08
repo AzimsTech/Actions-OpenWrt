@@ -108,6 +108,11 @@ jobs:
         for pkg in ${{ github.event.inputs.package }}; do
           echo "CONFIG_PACKAGE_${pkg}=y" >> $BUILD_ROOT/.config
         done
+
+        # Handle testing kernel
+        if [[ "${{ github.event.inputs.version }}" == "6.12-ramips" ]]; then
+          echo 'CONFIG_TESTING_KERNEL=y' >> $BUILD_ROOT/.config
+        fi
     
         $CUSTOM_CONFIG_SH
 
