@@ -20,6 +20,7 @@ on:
         options:
         - openwrt-24.10
         - snapshot
+        - 6.12-ramips
         - openwrt-23.05
         - openwrt-22.03
       profile:
