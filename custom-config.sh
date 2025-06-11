@@ -1,3 +1,6 @@
+# enable kernel testing
+echo 'CONFIG_TESTING_KERNEL=y' >> $BUILD_ROOT/.config
+
 # Custom firmware base
 # echo 'CONFIG_TARGET_ramips=y' >> $BUILD_ROOT/.config
 # echo 'CONFIG_TARGET_ramips_mt7621=y' >> $BUILD_ROOT/.config
