@@ -92,6 +92,9 @@ jobs:
 
     - name: Load custom
       run: |
+        # Load custom scripts
+        mv .config $BUILD_ROOT/.config
+
         chmod +x custom-*.sh
         $CUSTOM_FEEDS_SH
         $BUILD_ROOT/scripts/feeds update -a && $BUILD_ROOT/scripts/feeds install -a
@@ -99,14 +102,14 @@ jobs:
     
         # Handle target/subtarget/profile
         IFS='/' read -r TARGET SUBTARGET DEVICE_PROFILE <<< "${{ github.event.inputs.profile }}"
-        echo "CONFIG_TARGET_${TARGET}=y" >> $BUILD_ROOT/.config
-        echo "CONFIG_TARGET_${TARGET}_${SUBTARGET}=y" >> $BUILD_ROOT/.config
-        echo "CONFIG_TARGET_${TARGET}_${SUBTARGET}_DEVICE_${DEVICE_PROFILE}=y" >> $BUILD_ROOT/.config
+        # echo "CONFIG_TARGET_${TARGET}=y" >> $BUILD_ROOT/.config
+        # echo "CONFIG_TARGET_${TARGET}_${SUBTARGET}=y" >> $BUILD_ROOT/.config
+        # echo "CONFIG_TARGET_${TARGET}_${SUBTARGET}_DEVICE_${DEVICE_PROFILE}=y" >> $BUILD_ROOT/.config
     
         # Handle packages
-        for pkg in ${{ github.event.inputs.package }}; do
-          echo "CONFIG_PACKAGE_${pkg}=y" >> $BUILD_ROOT/.config
-        done
+        # for pkg in ${{ github.event.inputs.package }}; do
+        #  echo "CONFIG_PACKAGE_${pkg}=y" >> $BUILD_ROOT/.config
+        # done
     
         $CUSTOM_CONFIG_SH
 
