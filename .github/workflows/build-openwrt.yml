@@ -163,7 +163,7 @@ jobs:
       id: snapshottag 
       if: github.event.inputs.version == 'snapshot'
       run: |
-        echo "release_tag=SNAPSHOT_$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
+        echo "release_tag=SNAPSHOT_${{ env.DEVICE_NAME }}_$(date +'%Y.%m.%d-%H%M')" >> $GITHUB_OUTPUT
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload stable firmware to Release
