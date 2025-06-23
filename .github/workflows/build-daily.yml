@@ -1,7 +1,6 @@
 name: Trigger build openwrt daily
-on:
-  schedule:
-    - cron: '33 19 * * *'  
+
+on: workflow_dispatch
 
 jobs:
   trigger-foo:
