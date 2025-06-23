@@ -13,7 +13,7 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              workflow_id: 'foo.yml',
+              workflow_id: 'build-openwrt.yml',
               ref: 'master',
               inputs: {
                 version: 'snapshot',
