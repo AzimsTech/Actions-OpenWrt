@@ -15,7 +15,7 @@ jobs:
               repo: context.repo.repo,
               workflow_id: 'foo.yml',
               ref: 'master',
-              inputs: {  # Match input names from foo.yml
+              inputs: {
                 version: 'snapshot',
                 profile: 'ramips/mt7621/dlink_dir-882-a1',
                 package: 'luci luci-app-watchcat ethtool'
