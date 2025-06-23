@@ -1,0 +1,26 @@
+name: Trigger build openwrt daily
+on:
+  schedule:
+    - cron: '33 19 * * *'  
+
+jobs:
+  trigger-foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build dlink_dir-882-a1
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'foo.yml',
+              ref: 'master',
+              inputs: {  # Match input names from foo.yml
+                version: 'snapshot',
+                profile: 'ramips/mt7621/dlink_dir-882-a1',
+                package: 'luci luci-app-watchcat ethtool'
+              }
+            })
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
