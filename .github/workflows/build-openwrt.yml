@@ -120,7 +120,7 @@ jobs:
         cd $BUILD_ROOT && echo "$(($(nproc)+1)) thread compile"
         echo "*" > .dockerignore
         docker build --rm --tag openwrt:alpine --file ${{ github.workspace }}/Containerfile-alpine $BUILD_ROOT
-        docker run --interactive --rm --tty --ulimit 'nofile=1024:262144' --volume "$(pwd):/workdir" --workdir '/workdir' openwrt:alpine /bin/bash
+        docker run --interactive --rm --ulimit 'nofile=1024:262144' --volume "$(pwd):/workdir" --workdir '/workdir' openwrt:alpine /bin/bash
         IGNORE_ERRORS=m make -j$(($(nproc)+1)) defconfig download clean world || IGNORE_ERRORS=m make -j1 defconfig download clean world V=s
         echo "status=success" >> $GITHUB_OUTPUT
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
