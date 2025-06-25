@@ -96,17 +96,19 @@ jobs:
         $CUSTOM_FEEDS_SH
         $BUILD_ROOT/scripts/feeds update -a && $BUILD_ROOT/scripts/feeds install -a
         $CUSTOM_PACKAGES_SH
+
+        wget -O $BUILD_ROOT/.config https://downloads.openwrt.org/snapshots/targets/ramips/mt7621/config.buildinfo
     
-        # Handle target/subtarget/profile
-        IFS='/' read -r TARGET SUBTARGET DEVICE_PROFILE <<< "${{ github.event.inputs.profile }}"
-        echo "CONFIG_TARGET_${TARGET}=y" >> $BUILD_ROOT/.config
-        echo "CONFIG_TARGET_${TARGET}_${SUBTARGET}=y" >> $BUILD_ROOT/.config
-        echo "CONFIG_TARGET_${TARGET}_${SUBTARGET}_DEVICE_${DEVICE_PROFILE}=y" >> $BUILD_ROOT/.config
+        # # Handle target/subtarget/profile
+        # IFS='/' read -r TARGET SUBTARGET DEVICE_PROFILE <<< "${{ github.event.inputs.profile }}"
+        # echo "CONFIG_TARGET_${TARGET}=y" >> $BUILD_ROOT/.config
+        # echo "CONFIG_TARGET_${TARGET}_${SUBTARGET}=y" >> $BUILD_ROOT/.config
+        # echo "CONFIG_TARGET_${TARGET}_${SUBTARGET}_DEVICE_${DEVICE_PROFILE}=y" >> $BUILD_ROOT/.config
     
-        # Handle packages
-        for pkg in ${{ github.event.inputs.package }}; do
-          echo "CONFIG_PACKAGE_${pkg}=y" >> $BUILD_ROOT/.config
-        done
+        # # Handle packages
+        # for pkg in ${{ github.event.inputs.package }}; do
+        #   echo "CONFIG_PACKAGE_${pkg}=y" >> $BUILD_ROOT/.config
+        # done
     
         $CUSTOM_CONFIG_SH
 
