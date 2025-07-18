@@ -1,7 +1,7 @@
 # enable kernel testing
-echo 'CONFIG_TESTING_KERNEL=y' >> $BUILD_ROOT/.config
+# echo 'CONFIG_TESTING_KERNEL=y' >> $BUILD_ROOT/.config
 # enable all kernel modules
-echo 'CONFIG_ALL_KMODS=y' >> $BUILD_ROOT/.config
+# echo 'CONFIG_ALL_KMODS=y' >> $BUILD_ROOT/.config
 
 # Custom firmware base
 # echo 'CONFIG_TARGET_ramips=y' >> $BUILD_ROOT/.config
