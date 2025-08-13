@@ -20,7 +20,7 @@ jobs:
               inputs: {
                 version: 'snapshot',
                 profile: 'ramips/mt7621/dlink_dir-882-a1',
-                package: 'luci luci-app-watchcat ethtool'
+                package: 'luci'
               }
             })
       - name: Build dlink_dir-2150-a1
