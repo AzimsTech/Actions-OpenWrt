@@ -10,8 +10,8 @@ on:
         default: 'false'
         type: choice
         options:
-        - true
-        - false
+        - "true"
+        - "false"
       version:
         description: 'OpenWrt version'
         required: true
@@ -92,7 +92,7 @@ jobs:
 
     - name: Load custom
       run: |
-        chmod +x custom-*.sh
+        chmod +x *.sh
         $CUSTOM_FEEDS_SH
         $BUILD_ROOT/scripts/feeds update -a && $BUILD_ROOT/scripts/feeds install -a
         $CUSTOM_PACKAGES_SH
@@ -109,6 +109,7 @@ jobs:
         done
     
         $CUSTOM_CONFIG_SH
+        $PREBUILD_MISC_SH
 
     - name: Start SSH via tmate
       uses: rdp-studio/ssh2actions@main
