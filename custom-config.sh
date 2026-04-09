@@ -1,5 +1,6 @@
 # enable kernel testing
 echo 'CONFIG_TESTING_KERNEL=y' >> $BUILD_ROOT/.config
+echo 'CONFIG_MT76_LEDS=y' >> $BUILD_ROOT/.config
 # enable all kernel modules
 # echo 'CONFIG_ALL_KMODS=y' >> $BUILD_ROOT/.config
 
